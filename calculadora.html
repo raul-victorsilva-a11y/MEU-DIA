@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Calculadora</title>
 </head>
+
 <body>
 
-<h2>Calculadora</h2>
+    <h2>Calculadora</h2>
 
-<input type="text" placeholder="0" readonly><br>
+    <p id="display">0</p>
+    <div id="buttons">
 
-<button>7</button><button>8</button><button>9</button><button>/</button><br>
-<button>4</button><button>5</button><button>6</button><button>*</button><br>
-<button>1</button><button>2</button><button>3</button><button>-</button><br>
-<button>0</button><button>.</button><button>=</button><button>+</button><br>
-<button>Limpar</button>
+        <button data-type="number">7</button><button data-type="number">8</button><button data-type="number">9</button><button data-type="operator">/</button><br>
+        <button data-type="number">4</button><button data-type="number">5</button><button data-type="number">6</button><button data-type="operator">*</button><br>
+        <button data-type="number">1</button><button data-type="number">2</button><button data-type="number">3</button><button data-type="operator">-</button><br>
+        <button data-type="number">0</button><button data-type="equals">=</button><button data-type="operator">+</button><br>
+        <button data-type="clear">Limpar</button>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+    
+     const calculadora= document.getElementById('buttons');
+    
+    </script>
 
 </body>
+
 </html>
