@@ -9,21 +9,66 @@
 <body>
 
     <h2>Calculadora</h2>
-
     <p id="display">0</p>
-    <div id="buttons">
 
-        <button data-type="number">7</button><button data-type="number">8</button><button data-type="number">9</button><button data-type="operator">/</button><br>
-        <button data-type="number">4</button><button data-type="number">5</button><button data-type="number">6</button><button data-type="operator">*</button><br>
-        <button data-type="number">1</button><button data-type="number">2</button><button data-type="number">3</button><button data-type="operator">-</button><br>
-        <button data-type="number">0</button><button data-type="equals">=</button><button data-type="operator">+</button><br>
+    <div id="buttons">
+        <button data-type="number">7</button><button data-type="number">8</button><button
+            data-type="number">9</button><button data-type="operator">/</button><br>
+        <button data-type="number">4</button><button data-type="number">5</button><button
+            data-type="number">6</button><button data-type="operator">*</button><br>
+        <button data-type="number">1</button><button data-type="number">2</button><button
+            data-type="number">3</button><button data-type="operator">-</button><br>
+        <button data-type="number">0</button><button data-type="equals">=</button><button
+            data-type="operator">+</button><br>
         <button data-type="clear">Limpar</button>
     </div>
+
     <script>
         const display = document.getElementById('display');
-    
-     const calculadora= document.getElementById('buttons');
-    
+        const calculadora = document.getElementById('buttons');
+
+        let numero1 = '';
+        let numero2 = '';
+        let operador = '';
+
+        calculadora.onclick = function (e) {
+            let b = e.target;
+
+            if (b.dataset.type == 'number') {
+                if (operador == '') {
+                    numero1 += b.textContent;
+                    display.textContent = numero1;
+                } else {
+                    numero2 += b.textContent;
+                    display.textContent = numero2;
+                }
+            }
+
+            if (b.dataset.type == 'operator') {
+                operador = b.textContent;
+            }
+
+            if (b.dataset.type == 'equals') {
+                let resultado;
+
+                if (operador == '+') resultado = Number(numero1) + Number(numero2);
+                if (operador == '-') resultado = Number(numero1) - Number(numero2);
+                if (operador == '*') resultado = Number(numero1) * Number(numero2);
+                if (operador == '/') resultado = Number(numero1) / Number(numero2);
+
+                display.textContent = resultado;
+                numero1 = resultado;
+                numero2 = '';
+                operador = '';
+            }
+
+            if (b.dataset.type == 'clear') {
+                numero1 = '';
+                numero2 = '';
+                operador = '';
+                display.textContent = '0';
+            }
+        }
     </script>
 
 </body>
